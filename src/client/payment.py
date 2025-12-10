@@ -109,6 +109,7 @@ class PaymentWindow:
                 qr_label.image = photo
                 qr_label.pack(padx=20, pady=20)
             except Exception as e:
+                print(f"Erro ao carregar imagem do QR Code: {e}")
                 qr_placeholder = tk.Label(
                     qr_frame,
                     text="QR Code PIX\n(Imagem não encontrada)",
@@ -216,7 +217,7 @@ class PaymentWindow:
             self.window.destroy()
             
             if self.dashboard_ref:
-                self.dashboard_ref._show_home()
+                self.dashboard_ref._show_orders()
         
         except sqlite3.Error as e:
             messagebox.showerror("Erro", f"Erro ao confirmar pedido: {str(e)}")

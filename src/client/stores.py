@@ -7,12 +7,11 @@ class StoresPage:
     def __init__(self, parent, user_data):
         self.parent = parent
         self.user_data = user_data
-        self.window = parent
         
         self._create_widgets()
     
     def _create_widgets(self):
-        header_frame = tk.Frame(self.window, bg="#2196F3", height=80)
+        header_frame = tk.Frame(self.parent, bg="#2196F3", height=80)
         header_frame.pack(fill="x")
         header_frame.pack_propagate(False)
         
@@ -25,7 +24,7 @@ class StoresPage:
         )
         title_label.pack(pady=25)
         
-        content_frame = tk.Frame(self.window)
+        content_frame = tk.Frame(self.parent)
         content_frame.pack(fill="both", expand=True, padx=20, pady=20)
         
         info_label = tk.Label(

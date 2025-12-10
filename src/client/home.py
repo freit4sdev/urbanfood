@@ -11,14 +11,13 @@ class HomePage:
         self.parent = parent
         self.user_data = user_data
         self.dashboard_ref = dashboard_ref
-        self.window = parent
         self.cart_service = CartService()
         
         self._create_widgets()
         self._load_stores_and_products()
     
     def _create_widgets(self):
-        header_frame = tk.Frame(self.window, bg="#2196F3", height=80)
+        header_frame = tk.Frame(self.parent, bg="#2196F3", height=80)
         header_frame.pack(fill="x")
         header_frame.pack_propagate(False)
         
@@ -40,7 +39,7 @@ class HomePage:
         )
         welcome_label.pack()
         
-        search_frame = tk.Frame(self.window)
+        search_frame = tk.Frame(self.parent)
         search_frame.pack(fill="x", padx=20, pady=10)
         
         search_label = tk.Label(search_frame, text="🔍 Buscar lojas:", font=("Arial", 10))
@@ -58,7 +57,7 @@ class HomePage:
         )
         clear_btn.pack(side="left", padx=5)
         
-        main_frame = tk.Frame(self.window)
+        main_frame = tk.Frame(self.parent)
         main_frame.pack(fill="both", expand=True, padx=20, pady=10)
         
         canvas = tk.Canvas(main_frame, bg="white")

@@ -152,10 +152,11 @@ class StoreAuthWindow:
                 messagebox.showerror("Erro", "Dados da loja não encontrados.")
                 return
             
-            messagebox.showinfo("Sucesso", f"Bem-vindo, {user['name']}!")
             self.user_data = dict(user)
             self.store_data = dict(store)
             self._close_window()
+            from src.store.dashboard import StoreDashboard
+            StoreDashboard(self.parent, self.user_data, self.store_data)
             
         except sqlite3.Error as e:
             messagebox.showerror("Erro", f"Erro ao fazer login: {str(e)}")

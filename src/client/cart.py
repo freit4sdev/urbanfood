@@ -10,14 +10,13 @@ class CartPage:
         self.parent = parent
         self.user_data = user_data
         self.dashboard_ref = dashboard_ref
-        self.window = parent
         self.cart_service = CartService()
         
         self._create_widgets()
         self._load_cart()
     
     def _create_widgets(self):
-        header_frame = tk.Frame(self.window, bg="#4CAF50", height=80)
+        header_frame = tk.Frame(self.parent, bg="#4CAF50", height=80)
         header_frame.pack(fill="x")
         header_frame.pack_propagate(False)
         
@@ -30,7 +29,7 @@ class CartPage:
         )
         title_label.pack(pady=25)
         
-        main_frame = tk.Frame(self.window)
+        main_frame = tk.Frame(self.parent)
         main_frame.pack(fill="both", expand=True, padx=20, pady=20)
         
         canvas = tk.Canvas(main_frame, bg="white")
@@ -50,7 +49,7 @@ class CartPage:
         
         self.items_frame = scrollable_frame
         
-        summary_frame = tk.Frame(self.window, bg="#f5f5f5", height=100)
+        summary_frame = tk.Frame(self.parent, bg="#f5f5f5", height=100)
         summary_frame.pack(fill="x", side="bottom")
         summary_frame.pack_propagate(False)
         
@@ -231,6 +230,9 @@ class CartPage:
             return
         
         store_id = list(stores.keys())[0]
-        PaymentWindow(self.window, self.user_data, store_id, self.cart_service, self.dashboard_ref)
+        if self.dashboard_ref:
+            PaymentWindow(self.dashboard_ref.window, self.user_data, store_id, self.cart_service, self.dashboard_ref)
+        else:
+            PaymentWindow(self.parent.winfo_toplevel(), self.user_data, store_id, self.cart_service, self.dashboard_ref)
 
 

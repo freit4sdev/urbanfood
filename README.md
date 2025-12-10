@@ -14,7 +14,7 @@ Sistema de delivery de comida para desktop desenvolvido em Python com Tkinter.
    python main.py
    ```
 
-## 🔑 Credenciais Padrão
+## 🔑 Credenciais Padrão (pré-criadas)
 
 - **Admin:** 
   - Email: `admin@urbanfood.com`
